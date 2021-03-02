@@ -5,18 +5,14 @@ public class App
     public static void main( String[] args )
     {
         ReaderWriter readerWriter = new ReaderWriter();
+        try
+        {
         Splitter splitter = new Splitter(readerWriter);
-        String[] values = splitter.spliting();
-        if(values!=null){
-            Double op1=Checker.stringToDouble(values[0]);
-            Double op2=Checker.stringToDouble(values[2]);
-            if((op1!=null)&&(op2!=null))
-            {
-                Expression expression = new Expression(op1,op2,values[1]);
-                readerWriter.Write(expression.calculate());
-            }else
-                readerWriter.Write(ReaderWriter.ErrorSomewhere);
-        }else
-            readerWriter.Write(ReaderWriter.ErrorSomewhere);
+        String[] values = splitter.splitWithSpace();
+        Expression expression = new Expression(Double.parseDouble(values[0]) ,Double.parseDouble(values[2]) ,values[1]);
+        readerWriter.writeItDown(expression.calculate());
+        }catch (Exception e){
+            readerWriter.writeItDown(ReaderWriter.ERROR_SOMEWHERE);
+        }
     }
 }

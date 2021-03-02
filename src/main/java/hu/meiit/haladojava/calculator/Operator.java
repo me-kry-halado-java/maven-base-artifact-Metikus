@@ -17,7 +17,7 @@ public enum Operator {
         return this.symbol;
     }
 
-    public static boolean IsOperator(String s)
+    public static boolean isOperator(String s)
     {
         for (Operator operator : Operator.values()) {
             if (s.equals(operator.getSymbol())) {
@@ -27,13 +27,13 @@ public enum Operator {
         return false;
     }
 
-    public static Operator getOperationName(String s) {
+    public static Operator getOperation(String s) throws  Exception{
 
         for (Operator operator : Operator.values()) {
             if (s.equals(operator.getSymbol())) {
                 return operator;
             }
         }
-        return null;
+        throw new Exception("Not Operator");
     }
 }

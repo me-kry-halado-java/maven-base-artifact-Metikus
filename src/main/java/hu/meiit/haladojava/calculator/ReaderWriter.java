@@ -4,15 +4,15 @@ import java.util.Scanner;
 
 public class ReaderWriter
 {
-    public static final String ErrorSomewhere = "-";
+    public static final String ERROR_SOMEWHERE = "-";
 
-    public String ReadFromConsole()
+    public String readFromConsole()
     {
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
     }
 
-    public void Write(String s)
+    public void writeItDown(String s)
     {
         System.out.print(s);
     }

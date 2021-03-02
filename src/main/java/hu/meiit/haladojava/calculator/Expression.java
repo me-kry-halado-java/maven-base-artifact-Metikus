@@ -13,9 +13,8 @@ public class Expression
         this.operator = operator;
     }
 
-    public String calculate()
-    {
-        switch (Operator.getOperationName(operator))
+    public String calculate() throws Exception {
+        switch (Operator.getOperation(operator))
         {
             case ADDITION:
                 return String.valueOf(op1+op2);
@@ -28,12 +27,12 @@ public class Expression
 
             case DIVISION:
                 if(op2==0){
-                    return ReaderWriter.ErrorSomewhere;
+                    return ReaderWriter.ERROR_SOMEWHERE;
                 }else{
                     return String.valueOf(op1/op2);
                 }
             default:
-                return ReaderWriter.ErrorSomewhere;
+                throw new Exception("It's an operation which did not have any implement");
         }
     }
 }
